@@ -4,11 +4,17 @@ en:
       title: "Framgia E-Learning System"
       guest: "Guest"
       login: "Log In"
+      user: "User"
+      logout: "Log Out"
+      my_profile: "My Profile"
+      edit_profile: "Edit Profile"
     sidebar:
       home: "Home"
       about: "About"
       help: "Help"
       contact: "Contact Us"
+    error_messages:
+      intro: "The form contains "
   static_pages:
     about:
       title: "About"
@@ -18,3 +24,29 @@ en:
       title: "Help"
     home:
       title: "Framgia E-Learning System"
+      signup: "Sign Up"
+  users:
+    new:
+      title: "Sign Up"
+      confirmation: "Confirmation"
+      create: "Create my account"
+    index:
+      title: "All Users"
+    edit:
+      title: "Edit Profile"
+      page_header: "Update Your Profile"
+      confirmation: "Confirmation"
+      change: "Change"
+      save: "Save"
+    create:
+      success: "Welcome to the FELS"
+    update:
+      success: "Profile Updated"
+    destroy:
+      success: "Users Deleted"
+  sessions:
+    new:
+      title: "Log In"
+      remember_me: "Remember Me"
+      signup_now: "Sign Up"
+      new_user: "New User?"

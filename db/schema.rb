@@ -1,0 +1,95 @@
+ActiveRecord::Schema.define(version: 20160303091121) do
+
+  create_table "activities", force: :cascade do |t|
+    t.string   "action"
+    t.integer  "user_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  add_index "activities", ["user_id", "created_at"], name: "index_activities_on_user_id_and_created_at"
+  add_index "activities", ["user_id"], name: "index_activities_on_user_id"
+
+  create_table "categories", force: :cascade do |t|
+    t.string   "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  add_index "categories", ["name"], name: "index_categories_on_name"
+
+  create_table "lessons", force: :cascade do |t|
+    t.integer  "correct_item"
+    t.integer  "total_item"
+    t.datetime "finished_time"
+    t.integer  "user_id"
+    t.integer  "category_id"
+    t.datetime "created_at",    null: false
+    t.datetime "updated_at",    null: false
+  end
+
+  add_index "lessons", ["category_id"], name: "index_lessons_on_category_id"
+  add_index "lessons", ["user_id", "category_id"], name: "index_lessons_on_user_id_and_category_id"
+  add_index "lessons", ["user_id"], name: "index_lessons_on_user_id"
+
+  create_table "relationships", force: :cascade do |t|
+    t.integer  "follower_id"
+    t.integer  "followed_id"
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
+  end
+
+  add_index "relationships", ["followed_id"], name: "index_relationships_on_followed_id"
+  add_index "relationships", ["follower_id", "followed_id"], name: "index_relationships_on_follower_id_and_followed_id", unique: true
+  add_index "relationships", ["follower_id"], name: "index_relationships_on_follower_id"
+
+  create_table "results", force: :cascade do |t|
+    t.integer  "lesson_id"
+    t.integer  "word_id"
+    t.integer  "word_answer_id"
+    t.datetime "created_at",     null: false
+    t.datetime "updated_at",     null: false
+  end
+
+  add_index "results", ["lesson_id", "word_answer_id"], name: "index_results_on_lesson_id_and_word_answer_id"
+  add_index "results", ["lesson_id", "word_id"], name: "index_results_on_lesson_id_and_word_id"
+  add_index "results", ["lesson_id"], name: "index_results_on_lesson_id"
+  add_index "results", ["word_answer_id"], name: "index_results_on_word_answer_id"
+  add_index "results", ["word_id"], name: "index_results_on_word_id"
+
+  create_table "users", force: :cascade do |t|
+    t.string   "name"
+    t.string   "email"
+    t.string   "password_digest"
+    t.boolean  "admin",           default: false
+    t.datetime "created_at",                      null: false
+    t.datetime "updated_at",                      null: false
+  end
+
+  add_index "users", ["email"], name: "index_users_on_email", unique: true
+  add_index "users", ["name"], name: "index_users_on_name"
+
+  create_table "word_answers", force: :cascade do |t|
+    t.string   "content"
+    t.boolean  "correct",    default: false
+    t.integer  "word_id"
+    t.datetime "created_at",                 null: false
+    t.datetime "updated_at",                 null: false
+  end
+
+  add_index "word_answers", ["word_id", "content", "correct"], name: "index_word_answers_on_word_id_and_content_and_correct", unique: true
+  add_index "word_answers", ["word_id", "content"], name: "index_word_answers_on_word_id_and_content"
+  add_index "word_answers", ["word_id"], name: "index_word_answers_on_word_id"
+
+  create_table "words", force: :cascade do |t|
+    t.string   "content"
+    t.integer  "category_id"
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
+  end
+
+  add_index "words", ["category_id", "content"], name: "index_words_on_category_id_and_content", unique: true
+  add_index "words", ["category_id"], name: "index_words_on_category_id"
+  add_index "words", ["content"], name: "index_words_on_content"
+
+end

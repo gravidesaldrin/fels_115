@@ -5,10 +5,10 @@
   background-color: #00B140;
   border: 0;
 }
-  
+
 .navbar-inverse .navbar-brand,
 .navbar-inverse .navbar-nav>li>a {
-  color: #fff; 
+  color: #fff;
 }
 
 .navbar-inverse .navbar-nav > li > a:hover,
@@ -16,19 +16,19 @@
   color: #fff;
   background-color: #00D44D;
 }
- 
-.navbar-inverse .navbar-nav>.open>a, 
-.navbar-inverse .navbar-nav>.open>a:hover, 
+
+.navbar-inverse .navbar-nav>.open>a,
+.navbar-inverse .navbar-nav>.open>a:hover,
 .navbar-inverse .navbar-nav>.open>a:focus {
     background-color: #00D44D;
     color: #fff;
 }
-    
+
 a {
     color: #00B140;
     text-decoration: none;
 }
-    
+
 a:hover,
 a:focus {
   color: green;

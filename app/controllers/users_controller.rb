@@ -13,9 +13,9 @@ class UsersController < ApplicationController
   def create
     @user = User.new user_params
     if @user.save
-      log_in @user
-      flash[:success] = t ".title"
-      redirect_to @user
+      @user.send_activation_email
+      flash[:info] = t ".info"
+      redirect_to root_url
     else
       render :new
     end
@@ -26,7 +26,7 @@ class UsersController < ApplicationController
 
   def update
     if @user.update_attributes user_params
-      flash[:success] = t ".title"
+      flash[:success] = t ".success"
       redirect_to @user
     else
       render :edit
@@ -36,8 +36,8 @@ class UsersController < ApplicationController
   private
 
   def user_params
-    params.require(:user).permit :name, :email, :password,
-      :password_confirmation
+    params.require(:user).permit(:name, :email, :password,
+      :password_confirmation)
   end
 
   def logged_in_user

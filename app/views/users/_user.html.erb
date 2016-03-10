@@ -1,0 +1,18 @@
+<tr>
+  <td align="center">
+    <% if current_user.admin? && !current_user?(user) %>
+      <%= link_to [:admin, user], method: :delete, data: {confirm: t(".confirm")} do %>
+        <em class="glyphicon glyphicon-trash"></em>
+      <% end %>
+    <% end %>
+  </td>
+  <%= link_to user do %>
+    <td>
+      <%= gravatar_for user, size: 40 %>
+      <%= user.name %>
+    </td>
+    <td>
+      <%= user.email %>
+    </td>
+  <% end %>
+</tr>

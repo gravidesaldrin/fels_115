@@ -7,5 +7,14 @@ Rails.application.routes.draw do
   get "login" => "sessions#new"
   post "login" => "sessions#create"
   delete "logout" => "sessions#destroy"
-  resources :users, only: [:show, :new, :create, :edit, :update]
+
+  resources :users, only: [:index, :show, :new, :create, :edit, :update]
+  namespace :admin do
+    root "categories#index"
+    resources :categories
+    resources :users, only: [:destroy]
+  end
+
+  resources :account_activations, only: [:edit]
+  resources :password_resets, only: [:new, :create, :edit, :update]
 end

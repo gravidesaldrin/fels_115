@@ -3,13 +3,15 @@ en:
     navbar:
       title: "Framgia E-Learning System"
       guest: "Guest"
-      admin: "Admin"
+      admin: "Admin - "
       login: "Log In"
-      user: "User"
+      user: "User - "
       logout: "Log Out"
       my_profile: "My Profile"
       edit_profile: "Edit Profile"
     sidebar:
+      follower: "Follower"
+      following: "Following"
       menu: "Menu"
       all_users: "All Users"
       home: "Home"
@@ -51,6 +53,10 @@ en:
       success: "Profile Updated"
     destroy:
       success: "Users Deleted"
+    follow:
+      save: "Follow"
+    unfollow:
+      save: "Unfollow"
   sessions:
     new:
       title: "Log In"

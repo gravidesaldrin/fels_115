@@ -6,13 +6,13 @@
       <% end %>
     <% end %>
   </td>
-  <%= link_to user do %>
-    <td>
+  <td>
+    <%= link_to user do %>
       <%= gravatar_for user, size: 40 %>
       <%= user.name %>
-    </td>
-    <td>
-      <%= user.email %>
-    </td>
-  <% end %>
+    <% end %>
+  </td>
+  <td>
+    <%= user.email %>
+  </td>
 </tr>

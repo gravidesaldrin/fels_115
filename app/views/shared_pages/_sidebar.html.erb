@@ -1,5 +1,6 @@
 <div class="col-sm-3">
   <% if logged_in? %>
+    <%= render "shared_pages/stats" unless current_user.admin? %>
     <%= link_to users_path do %>
       <strong><i class="glyphicon glyphicon-list">
       </i> <%= t ".menu"%> </strong>

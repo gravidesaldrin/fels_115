@@ -23,6 +23,8 @@ class User < ActiveRecord::Base
   before_save :downcase_email
   before_create :create_activation_digest
 
+  scope :normal, -> {where admin: false}
+
   has_secure_password
 
   def digest string
@@ -73,8 +75,19 @@ class User < ActiveRecord::Base
     reset_sent_at < 2.hours.ago
   end
 
-  private
+  def follow other_user
+    active_relationships.create followed_id: other_user.id
+  end
 
+  def unfollow other_user
+    active_relationships.find_by(followed_id: other_user.id).destroy
+  end
+
+  def following? other_user
+    following.include? other_user
+  end
+
+  private
   def downcase_email
     self.email = email.downcase
   end

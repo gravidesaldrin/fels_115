@@ -1,0 +1,27 @@
+<div class="stats">
+  <ul class="nav nav-stacked">
+    <li>
+      <%= link_to "#" do %>
+        <i class="glyphicon glyphicon-star"></i>
+        <%= t ".follower"%>
+        <span class="badge badge-info">
+          <strong id="followers" class="stat">
+            <%= current_user.followers.count %>
+          </strong>
+        </span>
+      <% end %>
+    </li>
+    <li>
+      <%= link_to "#" do %>
+        <i class="glyphicon glyphicon-star-empty"></i>
+        <%= t ".following"%>
+        <span class="badge badge-info">
+          <strong id="following" class="stat">
+            <%= current_user.following.count %>
+          </strong>
+        </span>
+      <% end %>
+    </li>
+  </ul>
+</div>
+<hr>

@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title> <%= full_title yield :title %></title>
+    <%= stylesheet_link_tag "application", media: "all",
+        "data-turbolinks-track": true %>
+    <%= javascript_include_tag "application",
+        "data-turbolinks-track": true %>
+    <%= csrf_meta_tags %>
+    <%= render "admin/shared_pages/navbar" %>
+  </head>
+  <body>
+      <div class="container-fluid">
+        <div class="row">
+          <%= render "admin/shared_pages/sidebar" %>
+          <div class="col-sm-9">
+            <%= render "shared_pages/flash" %>
+            <%= yield %>
+          </div>
+        </div>
+      </div>
+  </body>
+</html>

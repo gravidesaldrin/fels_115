@@ -1,10 +1,7 @@
 <tr>
   <td align="center">
-    <% if current_user.admin? && !current_user?(user) %>
-      <%= link_to [:admin, user], method: :delete, data: {confirm: t(".confirm")} do %>
-        <em class="glyphicon glyphicon-trash"></em>
-      <% end %>
-    <% end %>
+    <% @user = user %>
+    <%= render "follow_form" %>
   </td>
   <td>
     <%= link_to user do %>

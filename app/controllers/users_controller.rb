@@ -1,5 +1,6 @@
 class UsersController < ApplicationController
   before_action :logged_in_user, only: [:index, :show, :edit, :update]
+  before_action :require_user
   before_action :correct_user, only: [:edit, :update]
   before_action :find_user, except: [:index, :new, :create]
 
@@ -38,6 +39,13 @@ class UsersController < ApplicationController
   end
 
   private
+  def require_user
+    if current_user.admin?
+      flash[:warning] = t ".warning"
+      redirect_to admin_user_path current_user
+    end
+  end
+
   def user_params
     params.require(:user).permit(:name, :email, :password,
       :password_confirmation)

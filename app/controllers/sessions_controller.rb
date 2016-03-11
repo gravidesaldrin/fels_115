@@ -8,7 +8,11 @@ class SessionsController < ApplicationController
       if user.activated?
         log_in user
         params[:session][:remember_me] == "1" ? remember(user) : forget(user)
-        redirect_back_or user
+        if user.admin?
+          redirect_to admin_user_url id: user.id
+        else
+          redirect_back_or user
+        end
       else
         flash[:warning] = t ".warning"
         redirect_to root_url

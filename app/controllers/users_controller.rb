@@ -9,6 +9,8 @@ class UsersController < ApplicationController
   end
 
   def show
+    @users = @user.send(params[:tab] ||= "followers").
+      paginate page: params[:page]
   end
 
   def new

@@ -2,7 +2,7 @@ class Admin::UsersController < AdminController
   before_action :find_user, except: [:index]
 
   def index
-    @users = User.paginate page: params[:page]
+    @users = User.order(:name).paginate page: params[:page]
   end
 
   def edit

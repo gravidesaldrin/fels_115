@@ -1,0 +1,15 @@
+<% provide :title, params[:active] == "followers" ? t(".followers") : t(".following") %>
+<div class="panel panel-default panel-table">
+  <div class="panel-heading">
+    <div class="row">
+      <div class="col col-xs-6">
+        <h3 class="panel-title">
+          <%= params[:active] == "followers" ? t(".followers") : t(".following") %>
+        </h3>
+      </div>
+    </div>
+  </div>
+  <div id = "user_list">
+    <%= render "users/user_list" %>
+  </div>
+</div>

@@ -1,0 +1,17 @@
+<tr>
+  <td align="center">
+    <%= link_to [:admin, category], method: :delete,
+      data: {confirm: t(".confirm")} do %>
+      <em class="glyphicon glyphicon-trash"></em>
+    <% end %>
+    &nbsp;
+    <%= link_to edit_admin_category_path category do %>
+      <em class="glyphicon glyphicon-edit"></em>
+    <% end %>
+  </td>
+  <td>
+    <%= link_to admin_category_path category do %>
+      <%= category.name %>
+    <% end %>
+  </td>
+</tr>

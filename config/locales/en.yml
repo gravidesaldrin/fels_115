@@ -1,16 +1,46 @@
 en:
   admin:
+    categories:
+      title: "Categories"
     require_admin:
       warning: "You do not have Admin Rights"
     shared_pages:
       navbar:
         title: "Framgia E-Learning System - Admin "
+      sidebar:
+        menu: "Menu"
+        all_users: "All Users"
+        categories: "Categories"
+        home: "Home"
+        about: "About"
+        help: "Help"
+        contact: "Contact Us"
+    categories:
+      index:
+        title: "Categories"
+        name: "Name"
+        create_new: "Create New"
+      category:
+        confirm: "You Sure?"
+      new:
+        title: "New Category"
+      create:
+        success: "Category created"
+      edit:
+        title: "Update Category"
+      update:
+        success: "Category updated"
+      form:
+        save: "Save"
     users:
       index:
         title: "All Users"
         name: "Name"
         email: "Email"
-        create_new: "Create New"
+      new:
+        title: "Create User"
+        confirmation: "Confirmation"
+        create: "Save"
       user:
         confirm: "You Sure?"
       edit:
@@ -20,11 +50,15 @@ en:
         change: "Change"
         save: "Save"
       create:
-        info: "Please check your email to activate your account."
+        success: "User created."
       update:
         success: "Profile Updated"
       destroy:
         success: "Users Deleted"
+  relationships:
+    index:
+      followers: "Followers"
+      following: "Following"
   shared_pages:
     navbar:
       title: "Framgia E-Learning System"
@@ -83,6 +117,9 @@ en:
       save: "Unfollow"
     require_user:
       warning: "You do not have priveleges"
+    show:
+      followers: "Followers"
+      following: "Following"
   sessions:
     new:
       title: "Log In"

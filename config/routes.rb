@@ -8,11 +8,12 @@ Rails.application.routes.draw do
   post "login" => "sessions#create"
   delete "logout" => "sessions#destroy"
 
-  resources :users, only: [:index, :show, :new, :create, :edit, :update]
+  resources :users, except: [:destroy, :new, :create]
 
   namespace :admin do
     root "users#show"
     resources :users
+    resources :categories
   end
 
   resources :account_activations, only: [:edit]

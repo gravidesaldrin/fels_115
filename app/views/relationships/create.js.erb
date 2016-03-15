@@ -1,2 +1,7 @@
-$(".follow_form_<%= @user.id %>").html("<%= escape_javascript render "users/unfollow" %>");
+<% @user = @recent_user %>
+$(".follow_form_<%= @follower.id %>").html("<%= escape_javascript render "users/unfollow" %>");
 $("#following").html("<%= current_user.following.count %>");
+<% @users = @recent_user.following.paginate page: params[:page] %>
+$("#following_div").html("<%= escape_javascript render "users/user_list" %>");
+<% @users = @recent_user.followers.paginate page: params[:page] %>
+$("#followers_div").html("<%= escape_javascript render "users/user_list" %>");

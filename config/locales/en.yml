@@ -10,6 +10,7 @@ en:
         title: "All Users"
         name: "Name"
         email: "Email"
+        create_new: "Create New"
       user:
         confirm: "You Sure?"
       edit:

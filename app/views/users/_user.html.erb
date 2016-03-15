@@ -1,7 +1,6 @@
 <tr>
   <td align="center">
-    <% @user = user %>
-    <%= render "users/follow_form" %>
+    <%= render "users/follow_form", user: user %>
   </td>
   <td>
     <%= link_to user do %>

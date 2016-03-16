@@ -1,0 +1,26 @@
+<%= form_for [:admin, @word], html: {multipart: true,
+  class: "margin-bottom-40"} do |f| %>
+  <%= render "shared_pages/error_messages", object: f.object %>
+  <div class = "form-group">
+    <%= f.label :content %>
+    <%= f.text_field :content, class: "form-control" %>
+  </div>
+  <div class = "form-group">
+    <%= f.label :category %>
+    <%= f.select(:category_id, Category.all.collect {|p| [ p.name, p.id ] },
+    {prompt: true}, class: "form-control") %>
+  </div>
+  <div> &nbsp; </div>
+  <%= label_tag t ".answer" %>
+  <%= f.fields_for :word_answers do |builder| %>
+    <%= render "word_answer_fields", f: builder %>
+  <% end %>
+  <div class = "form-group" align = "right">
+    <div class = "added-word_answer"></div>
+    <%= link_to_add_fields t(".add"), f, :word_answers,
+      "btn btn-primary add-remove-word_answer",  t(".answer") %>
+  </div>
+  <hr/>
+  <%= f.submit t(".save"), class: "btn btn-primary" %>
+  <div> &nbsp; </div>
+<% end %>

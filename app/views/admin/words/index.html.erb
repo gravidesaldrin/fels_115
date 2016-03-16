@@ -1,6 +1,6 @@
 <% provide :title, t(".title") %>
 <ul class="breadcrumb">
-  <li><%= link_to t(".title"), admin_categories_path %></li>
+  <li><%= link_to t(".title"), admin_words_path %></li>
   <li class="active"><%= t ".current_action" %></li>
 </ul>
 <div class="panel panel-default panel-table">
@@ -10,7 +10,7 @@
         <h3 class="panel-title"><%= t ".title" %></h3>
       </div>
       <div class="col col-xs-6 text-right">
-        <%= button_to t(".create_new"), new_admin_category_path,
+        <%= button_to t(".create_new"), new_admin_word_path,
           class: "btn btn-sm btn-primary btn-create", method: "get" %>
       </div>
     </div>
@@ -20,12 +20,12 @@
       <thead>
         <tr>
           <th><em class="glyphicon glyphicon-cog"></em></th>
-          <th><%= t ".name" %></th>
-          <th><%= t ".total_words" %></th>
+          <th><%= t ".content" %></th>
+          <th><%= t ".category" %></th>
         </tr>
       </thead>
-      <tbody class="categories">
-        <%= render @categories %>
+      <tbody class="words">
+        <%= render @words %>
       </tbody>
     </table>
   </div>

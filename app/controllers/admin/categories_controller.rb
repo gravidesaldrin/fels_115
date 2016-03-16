@@ -20,6 +20,7 @@ class Admin::CategoriesController < AdminController
   end
 
   def show
+    @words = @category.words.paginate page: params[:page]
   end
 
   def edit
@@ -36,15 +37,16 @@ class Admin::CategoriesController < AdminController
 
   def destroy
     @category.destroy
+    flash[:success] = t ".success"
     redirect_to admin_categories_path
   end
 
   private
   def find_category
-    @category = Category.find params[:id]
+    @category = Category.find  params[:id]
   end
 
   def category_params
-    params.require(:category).permit :name
+    params.require(:category).permit :id, :name
   end
 end

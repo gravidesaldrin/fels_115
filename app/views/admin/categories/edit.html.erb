@@ -1,4 +1,9 @@
 <% provide :title, t(".title") %>
+<ul class="breadcrumb">
+  <li><%= link_to t(".current_menu"), admin_categories_path %></li>
+  <li><%= link_to @category.name, admin_category_path(@category) %></li>
+  <li class="active"><%= t ".current_action" %></li>
+</ul>
 <strong> <h1> <%= t ".title" %> </h1> </strong>
 <div class="row">
   <div class="col-lg-8">

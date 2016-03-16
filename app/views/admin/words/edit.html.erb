@@ -1,0 +1,12 @@
+<% provide :title, t(".title") %>
+<ul class="breadcrumb">
+  <li><%= link_to t(".current_menu"), admin_words_path %></li>
+  <li><%= @word.content %></li>
+  <li class="active"><%= t ".current_action" %></li>
+</ul>
+<strong> <h1> <%= t ".title" %> </h1> </strong>
+<div class="row">
+  <div class="col-lg-8">
+    <%= render "form" %>
+  </div>
+</div>

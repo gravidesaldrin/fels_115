@@ -87,6 +87,15 @@ class User < ActiveRecord::Base
     following.include? other_user
   end
 
+  def current_lesson
+    lessons.find_by finished_time: nil
+  end
+
+  def unlearned_words current_category
+    current_category.words.reject{|attribute|
+    Word.correct(self).include? attribute}
+  end
+
   private
   def downcase_email
     self.email = email.downcase

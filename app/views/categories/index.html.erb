@@ -1,0 +1,27 @@
+<% provide :title, t(".title") %>
+<div class="panel panel-default panel-table">
+  <div class="panel-heading">
+    <div class="row">
+      <div class="col col-xs-6">
+        <h3 class="panel-title"><%= t ".title" %></h3>
+      </div>
+    </div>
+  </div>
+  <div class="panel-body">
+    <table class="table table-striped table-bordered table-list">
+      <thead>
+        <tr>
+          <th><em class="glyphicon glyphicon-cog"></em></th>
+          <th><%= t ".name" %></th>
+          <th><%= t ".total_words" %></th>
+        </tr>
+      </thead>
+      <tbody class="categories">
+        <%= render @categories %>
+      </tbody>
+    </table>
+  </div>
+  <div class="panel-footer">
+    <%= will_paginate %>
+  </div>
+</div>

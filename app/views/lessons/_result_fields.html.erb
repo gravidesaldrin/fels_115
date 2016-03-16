@@ -1,0 +1,7 @@
+<div class = "form-group">
+  <% question.word_answers.each do |attribute| %>
+    <%= f.label :word_answer_id, attribute.content, value: attribute.id  %>
+    <%= f.radio_button :word_answer_id, attribute.id %>
+    <%= f.hidden_field :word_id, value: question.id %>
+  <% end %>
+</div>

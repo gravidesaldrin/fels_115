@@ -1,0 +1,28 @@
+<tr>
+  <td align="center">
+    <% if current_user.current_lesson.blank? %>
+      <% if current_user.unlearned_words(category).blank? %>
+        <%= button_to t(".save"), "#", class: "btn btn-sm btn-primary
+          btn-create", disabled: true %>
+      <% else %>
+        <%= render "categories/start", category: category %>
+      <% end %>
+    <% else %>
+      <% unless current_user.current_lesson.category == category %>
+        <%= render "categories/start", category: category %>
+      <% else %>
+        <%= button_to t(".continue"), edit_lesson_path(
+          current_user.current_lesson), class: "btn btn-sm btn-primary
+          btn-create", method: "get" %>
+      <% end %>
+    <% end %>
+  </td>
+  <td>
+    <%= link_to admin_category_path category do %>
+      <%= category.name %>
+    <% end %>
+  </td>
+  <td>
+    <%= category.words.count %>
+  </td>
+</tr>

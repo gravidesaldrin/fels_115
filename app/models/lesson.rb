@@ -5,6 +5,8 @@ class Lesson < ActiveRecord::Base
 
   before_update :finish_lesson
 
+  scope :finished , -> {where "finished_time IS NOT NULL"}
+
   accepts_nested_attributes_for :results, allow_destroy: true,
     reject_if: lambda {|attribute| attribute[:word_answer_id].blank?}
 

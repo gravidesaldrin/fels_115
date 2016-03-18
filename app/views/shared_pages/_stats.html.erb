@@ -1,8 +1,7 @@
 <div class="stats">
   <ul class="nav nav-stacked">
     <li>
-      <%= link_to relationships_path user: current_user,
-        active: "followers" do %>
+      <%= link_to relationships_path user: current_user, active: "followers" do %>
         <i class="glyphicon glyphicon-star"></i>
         <%= t ".follower"%>
         <span class="badge badge-info">
@@ -13,8 +12,7 @@
       <% end %>
     </li>
     <li>
-      <%= link_to relationships_path user: current_user,
-        active: "following" do %>
+      <%= link_to relationships_path user: current_user, active: "following" do %>
         <i class="glyphicon glyphicon-star-empty"></i>
         <%= t ".following"%>
         <span class="badge badge-info">

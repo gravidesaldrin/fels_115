@@ -1,5 +1,10 @@
 class LessonsController < ApplicationController
-  before_action :find_lesson, except: [:create]
+  before_action :find_lesson, except: [:index, :create]
+
+  def index
+    @lessons = current_user.lessons.finished.paginate page: params[:page]
+  end
+
   def create
     @category = Category.find params[:category]
     @category.start_a_lesson current_user

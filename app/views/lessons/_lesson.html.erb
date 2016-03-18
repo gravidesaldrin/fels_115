@@ -1,0 +1,13 @@
+<tr>
+  <td align= center>
+    <%= link_to results_path id: lesson.id do %>
+      <%= lesson.category.name %>
+    <% end %>
+  </td>
+  <td>
+    <%= lesson.correct_item %>
+  </td>
+  <td>
+    <%= lesson.total_item %>
+  </td>
+</tr>

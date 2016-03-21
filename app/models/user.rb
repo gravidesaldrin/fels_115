@@ -96,6 +96,10 @@ class User < ActiveRecord::Base
     Word.correct(self).include? attribute}
   end
 
+  def following_activities
+    Activity.where "user_id in (?)", self.following.pluck(:id)
+  end
+
   private
   def downcase_email
     self.email = email.downcase

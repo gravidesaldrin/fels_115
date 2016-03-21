@@ -4,6 +4,7 @@ class Lesson < ActiveRecord::Base
   has_many :results, dependent: :destroy
 
   before_update :finish_lesson
+  after_update :create_activity
 
   scope :finished , -> {where "finished_time IS NOT NULL"}
 
@@ -26,6 +27,12 @@ class Lesson < ActiveRecord::Base
   end
 
   private
+  def create_activity
+    Activity.create user_id: self.user_id, action:
+      "Learned #{self.correct_item} word(s) in Lesson '#{self.category.name}' -
+      #{self.finished_time.strftime("(%m/%d/%Y)")}"
+  end
+
   def finish_lesson
     self.correct_item = self.results.select{|attribute|
       attribute.word_answer.correct?}.count

@@ -9,8 +9,15 @@ class UsersController < ApplicationController
   end
 
   def show
-    @users = @user.send(params[:tab] ||= "followers").
-      paginate page: params[:page]
+    if params[:tab].nil? or params[:tab] == "activities"
+      activities = @user.activities
+      if @user == current_user
+        activities += current_user.following_activities
+      end
+      @activities = activities.paginate page: params[:page]
+    else
+      @users = @user.send(params[:tab]).paginate page: params[:page]
+    end
   end
 
   def new
@@ -49,8 +56,8 @@ class UsersController < ApplicationController
   end
 
   def user_params
-    params.require(:user).permit(:name, :email, :password,
-      :password_confirmation)
+    params.require(:user).permit :name, :email, :password,
+      :password_confirmation
   end
 
   def find_user

@@ -13,14 +13,30 @@
     <ul class="nav nav-tabs" id="myTab">
       <% if params[:tab] == "following" %>
         <li>
+          <a href="<%= user_path @user, tab: "activities" %>">Activities</a>
+        </li>
+        <li>
           <a href="<%= user_path @user, tab: "followers" %>">Followers</a>
         </li>
         <li class="active">
           <a href="#follower_tab" data-toggle="tab">Following</a>
         </li>
-      <% else %>
+      <% elsif params[:tab] == "followers" %>
+        <li>
+          <a href="<%= user_path @user, tab: "activities" %>">Activities</a>
+        </li>
         <li class="active">
           <a href="#follower_tab" data-toggle="tab">Followers</a>
+        </li>
+        <li>
+          <a href="<%= user_path @user, tab: "following" %>">Following</a>
+        </li>
+      <% else %>
+        <li class="active">
+          <a href="<%= user_path @user, tab: "activities" %>">Activities</a>
+        </li>
+        <li>
+          <a href="<%= user_path @user, tab: "followers" %>">Followers</a>
         </li>
         <li>
           <a href="<%= user_path @user, tab: "following" %>">Following</a>
@@ -29,14 +45,22 @@
     </ul>
     <div class="tab-content">
       <% if params[:tab] == "following" %>
+        <div class="tab-pane" id="activity_tab"></div>
         <div class="tab-pane" id="follower_tab"> </div>
         <div class="tab-pane active"id="following_tab" >
           <div id = "following_div" %><%= render "users/user_list" %></div>
         </div>
-      <% else %>
+      <% elsif params[:tab] == "followers" %>
+        <div class="tab-pane" id="activity_tab"></div>
         <div class="tab-pane active" id="follower_tab">
           <div id = "followers_div" %><%= render "users/user_list" %></div>
         </div>
+        <div class="tab-pane" id="following_tab"></div>
+      <% else %>
+        <div class="tab-pane active" id="activity_tab">
+          <%= render "users/activity" %>
+        </div>
+        <div class="tab-pane" id="follower_tab"> </div>
         <div class="tab-pane" id="following_tab"></div>
       <% end %>
     </div>

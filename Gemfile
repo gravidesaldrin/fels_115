@@ -1,7 +1,6 @@
 source "https://rubygems.org"
 
 gem "rails", "4.2.5"
-gem "sqlite3"
 gem "bcrypt", "3.1.7"
 gem "bootstrap-sass", "3.2.0.0"
 gem "sass-rails", "5.0.2"
@@ -22,6 +21,13 @@ group :development, :test do
 end
 
 group :development do
+  gem "sqlite3"
   gem "web-console", "~> 2.0"
   gem "spring"
+end
+
+group :production do
+  gem 'pg',             '0.17.1'
+  gem 'rails_12factor', '0.0.2'
+  gem 'puma',           '2.11.1'
 end

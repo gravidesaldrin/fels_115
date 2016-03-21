@@ -1,0 +1,28 @@
+<div class="row">
+  <div class="col-md-12">
+    <ul class="list-group">
+      <% @activities.each do |a| %>
+      <li class="list-group-item">
+        <span class="content">
+          <% if current_user == a.user %>
+            <%= t ".you" %>
+          <% else %>
+            <% if @user == a.user %>
+              <%= a.user.name %>
+            <% else %>
+              <%= link_to a.user.name, a.user %>
+             <% end %>
+          <% end %>
+          <%= a.action %>
+        </span>
+        <span class="timestamp">
+          <%= time_ago_in_words a.created_at %> ago.
+        </span>
+      </li>
+      <% end %>
+      <li class="list-group-item">
+        <%= will_paginate @activities %>
+      </li>
+    </ul>
+  </div>
+</div>

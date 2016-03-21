@@ -1,4 +1,8 @@
 <% provide :title, @user.name %>
+<ul class="breadcrumb">
+  <li><%= link_to t(".current_menu"), admin_users_path %></li>
+  <li class="active"><%= t ".current_action" %></li>
+</ul>
 <div class="row">
   <h1>
     <%= @user.name %>

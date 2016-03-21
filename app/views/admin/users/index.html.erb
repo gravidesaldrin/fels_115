@@ -1,4 +1,8 @@
 <% provide :title, t(".title") %>
+<ul class="breadcrumb">
+  <li><%= link_to t(".title"), admin_users_path %></li>
+  <li class="active"><%= t ".current_action" %></li>
+</ul>
 <div class="panel panel-default panel-table">
   <div class="panel-heading">
     <div class="row">
@@ -6,9 +10,8 @@
         <h3 class="panel-title"><%= t ".title" %></h3>
       </div>
       <div class="col col-xs-6 text-right">
-        <button type="button" class="btn btn-sm btn-primary btn-create">
-          <%= t ".create_new" %>
-        </button>
+        <%= button_to t(".create_new"), new_admin_user_path,
+          class: "btn btn-sm btn-primary btn-create", method: "get" %>
       </div>
     </div>
   </div>

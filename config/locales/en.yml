@@ -94,6 +94,10 @@ en:
         current_action: "New"
         current_menu: "Words"
         title: "New Word"
+      edit:
+        current_action: "Edit"
+        current_menu: "Words"
+        title: "Update Word"
       form:
         content: "Content"
         answer: "Answer"
@@ -162,7 +166,7 @@ en:
       change: "Change"
       save: "Save"
     create:
-      info: "Please check your email to activate your account."
+      info: "You successfully log in your account."
     update:
       success: "Profile Updated"
     destroy:

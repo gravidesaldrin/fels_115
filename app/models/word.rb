@@ -1,11 +1,11 @@
 class Word < ActiveRecord::Base
 
-
   belongs_to :category
   has_many :results
   has_many :word_answers, dependent: :destroy
 
   validates :content, uniqueness: true, presence: true
+  validates :category_id, presence: true
 
   scope :correct, -> (user) {joins(results: [:lesson,:word_answer]).
      where("lessons.user_id = ? and word_answers.correct = ?", user, true)}

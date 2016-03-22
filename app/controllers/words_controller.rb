@@ -6,7 +6,11 @@ class WordsController < ApplicationController
     else
       @category = Category.first
     end
-    @words = Word.search_words(@category, params[:filter], current_user)
-      .paginate page: params[:page]
+    unless @category.blank?
+      @words = Word.search_words(@category, params[:filter], current_user)
+        .paginate page: params[:page]
+    else
+      @words = Word.paginate page: params[:page]
+    end
   end
 end

@@ -32,12 +32,15 @@
           <th><%= t ".content" %></th>
         </tr>
       </thead>
-      <tbody class="words">
-        <%= render @words %>
-      </tbody>
+      <% if not @words.blank? %>
+        <tbody class="words">
+          <%= render @words %>
+        </tbody>
+      <% end %>
     </table>
   </div>
   <div class="panel-footer">
     <%= will_paginate %>
   </div>
 </div>
+
